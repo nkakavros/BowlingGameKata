@@ -29,7 +29,24 @@ namespace BowlingGame
 
         public int Score()
         {
-            return 0;
+            int totalScore = 0;
+            for (int i = 0; i < knockedDownPins.Length; i++)
+            {
+                if (knockedDownPins[i] == 10)
+                {
+                    totalScore += knockedDownPins[i + 1] + knockedDownPins[i + 2];
+                }
+                else if (i > 0 && i % 2 == 1)
+                {
+                    int frameScore = knockedDownPins[i] + knockedDownPins[i - 1];
+                    if (frameScore == 10)
+                    {
+                        totalScore += knockedDownPins[i + 1];
+                    }
+                }
+                totalScore += knockedDownPins[i];
+            }
+            return totalScore;
         }
     }
 }

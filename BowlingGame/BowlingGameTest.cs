@@ -24,5 +24,17 @@ namespace BowlingGame
             }
             Assert.AreEqual(0, game.Score());
         }
+
+        [Test]
+        public void TestAllOnes()
+        {
+            Game game = NewGame;
+
+            for (int i = 0; i < 20; i++)
+            {
+                game.Roll(1);
+            }
+            Assert.AreEqual(20, game.Score());
+        }
     }
 }
