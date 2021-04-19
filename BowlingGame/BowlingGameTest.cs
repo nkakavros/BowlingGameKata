@@ -39,9 +39,21 @@ namespace BowlingGame
             Assert.AreEqual(16, game.Score());
         }
 
-        #region Private Methods
+        [Test]
+        public void TestOneStrike()
+        {
+            Setup();
+            game.Roll(10); // strike
+            game.Roll(3);
+            game.Roll(4);
+            RollMany(16, 0);
+            Assert.AreEqual(24, game.Score());
+        }
 
-        private void Setup()
+
+    #region Private Methods
+
+    private void Setup()
         {
             game = new Game();
         }
