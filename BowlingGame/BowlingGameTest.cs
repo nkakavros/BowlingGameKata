@@ -43,7 +43,7 @@ namespace BowlingGame
         public void TestOneStrike()
         {
             Setup();
-            game.Roll(10); // strike
+            RollStrike();
             game.Roll(3);
             game.Roll(4);
             RollMany(16, 0);
@@ -70,6 +70,11 @@ namespace BowlingGame
         {
             game.Roll(5);
             game.Roll(5);
+        }
+
+        private void RollStrike()
+        {
+            game.Roll(10);
         }
 
         #endregion
