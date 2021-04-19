@@ -13,40 +13,25 @@ namespace BowlingGame
 
         #region Private Members
 
-        private int[] knockedDownPins = new int[21];
-        private int rollCounter = 0;
+        private int[] rolls = new int[21];
+        private int currentRoll = 0;
+
 
         #endregion
 
         public void Roll(int pins)
         {
-            if (pins == 10)
-            {
-                rollCounter++;
-            }
-            knockedDownPins[rollCounter++] = pins;
+            rolls[currentRoll++] = pins;
         }
 
         public int Score()
         {
-            int totalScore = 0;
-            for (int i = 0; i < knockedDownPins.Length; i++)
+            int score = 0;
+            for (int i = 0; i < rolls.Length; i++)
             {
-                if (knockedDownPins[i] == 10)
-                {
-                    totalScore += knockedDownPins[i + 1] + knockedDownPins[i + 2];
-                }
-                else if (i > 0 && i % 2 == 1)
-                {
-                    int frameScore = knockedDownPins[i] + knockedDownPins[i - 1];
-                    if (frameScore == 10)
-                    {
-                        totalScore += knockedDownPins[i + 1];
-                    }
-                }
-                totalScore += knockedDownPins[i];
-            }
-            return totalScore;
+                score += rolls[i];
+            }          
+            return score;
         }
     }
 }
