@@ -30,8 +30,7 @@ namespace BowlingGame
             int frameIndex = 0;
             for (int frame = 0; frame < 10; frame++)
             {
-                if (rolls[frameIndex] +
-                    rolls[frameIndex + 1] == 10) // spare
+                if (IsSpare(frameIndex))
                 {
                     score += 10 + rolls[frameIndex + 2];
                     frameIndex += 2;
@@ -45,5 +44,15 @@ namespace BowlingGame
             }
             return score;
         }
+
+        #region Private Methods
+
+        private bool IsSpare(int frameIndex)
+        {
+            return rolls[frameIndex] +
+                   rolls[frameIndex + 1] == 10;
+        }
+
+        #endregion
     }
 }

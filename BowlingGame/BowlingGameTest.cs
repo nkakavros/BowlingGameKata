@@ -33,8 +33,7 @@ namespace BowlingGame
         public void TestOneSpare()
         {
             Setup();
-            game.Roll(5);
-            game.Roll(5); //spare
+            RollSpare();
             game.Roll(3);
             RollMany(17, 0);
             Assert.AreEqual(16, game.Score());
@@ -53,6 +52,12 @@ namespace BowlingGame
             {
                 game.Roll(pins);
             }
+        }
+
+        private void RollSpare()
+        {
+            game.Roll(5);
+            game.Roll(5);
         }
 
         #endregion
