@@ -9,32 +9,42 @@ namespace BowlingGame
 
         #region Private Members
 
-        private Game NewGame => new Game();
+        private Game game;
 
         #endregion
 
         [Test]
         public void TestGutterGame()
         {
-            Game game = NewGame;
-
-            for (int i = 0; i < 20; i++)
-            {
-                game.Roll(0);
-            }
+            Setup();
+            RollMany(20, 0);
             Assert.AreEqual(0, game.Score());
         }
 
         [Test]
         public void TestAllOnes()
         {
-            Game game = NewGame;
-
-            for (int i = 0; i < 20; i++)
-            {
-                game.Roll(1);
-            }
+            Setup();
+            RollMany(20, 1);
             Assert.AreEqual(20, game.Score());
         }
+
+        #region Private Methods
+
+        private void Setup()
+        {
+            game = new Game();
+        }
+
+        private void RollMany(int n, int pins)
+        {
+            Setup();
+            for (int i = 0; i < n; i++)
+            {
+                game.Roll(pins);
+            }
+        }
+
+        #endregion
     }
 }
