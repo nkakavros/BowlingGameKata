@@ -50,6 +50,15 @@ namespace BowlingGame
             Assert.AreEqual(24, game.Score());
         }
 
+        [Test]
+        public void TestPerfectGame()
+        {
+            Setup();
+            RollMany(12,10);
+            Assert.AreEqual(300, game.Score());
+        }
+
+
 
     #region Private Methods
 
